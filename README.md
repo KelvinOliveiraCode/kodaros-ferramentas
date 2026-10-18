@@ -14,7 +14,7 @@
 
 ## O que é
 
-PWA com 53 calculadoras de negócio, offline-first via service worker | Business calculators PWA, offline-first
+PWA com 53 calculadoras de negócio, offline-first via service worker
 
 ---
 

@@ -29,7 +29,7 @@ Small businesses need numbers (CAC, LTV, break-even point, cash flow, NPS) but u
 - localStorage (favorites, recents, input persistence, anonymous kodaros_events events)
 - Canvas API (PNG export of results and editable templates: business card, Instagram post, coupon)
 - Fonts: Cinzel, Cormorant Garamond, and Figtree (Google Fonts)
-- Hosting: GitHub Pages (https://kelvinoliveiracode.github.io/kodarosferramentas/)
+- Hosting: GitHub Pages (https://kelvinoliveiracode.github.io/kodaros-ferramentas/)
 - Tests: jsdom (tests/smoke.js)
 
 ## How it works
@@ -42,7 +42,7 @@ There is no build step nor production dependencies.
 
 1. Download or clone the Kodaros Ferramentas folder.
 2. Open index.html in the browser.
-3. To use as a PWA: visit https://kelvinoliveiracode.github.io/kodarosferramentas/ and install (Add to home screen).
+3. To use as a PWA: visit https://kelvinoliveiracode.github.io/kodaros-ferramentas/ and install (Add to home screen).
 
 To run the tests:
 
@@ -99,4 +99,4 @@ All rights reserved. KODAROS, 2026.
 
 ## Author
 
-KODAROS — kodaros01@gmail.com — https://kelvinoliveiracode.github.io/KodarosLanding/
+KODAROS - kodaros01@gmail.com - https://kelvinoliveiracode.github.io/kodaros-landing/

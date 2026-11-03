@@ -1,4 +1,4 @@
-/* Smoke test das Ferramentas KODAROS — roda o site em jsdom e valida
+/* Smoke test das Ferramentas KODAROS · roda o site em jsdom e valida
    fonte única, contagens, calculadoras e estados dinâmicos. */
 const fs = require('fs');
 const path = require('path');
@@ -26,8 +26,8 @@ window.eval(scriptCode);
 
 let falhas = 0;
 function check(nome, cond, detalhe) {
-  if (cond) console.log('  ok  ' + nome + (detalhe ? ' — ' + detalhe : ''));
-  else { falhas++; console.error('  FALHA  ' + nome + (detalhe ? ' — ' + detalhe : '')); }
+  if (cond) console.log('  ok  ' + nome + (detalhe ? ' · ' + detalhe : ''));
+  else { falhas++; console.error('  FALHA  ' + nome + (detalhe ? ' · ' + detalhe : '')); }
 }
 
 setTimeout(function run() {
@@ -76,7 +76,7 @@ setTimeout(function run() {
   star.click();
 
   check('Link principal = landing', document.querySelector('.nav-cta').href.includes('kelvinoliveiracode.github.io/kodaros-landing/'));
-  check('CSS Dossiê presente', css.includes('hero-ledger') && css.includes('.tool.fav .tool-num'));
+  check('CSS Dossiê presente', css.includes('.ficha') && css.includes('.tool.fav .tool-num'));
 
   check('Sem erros de runtime', runtimeErrors.length === 0, runtimeErrors.join(' | ').slice(0, 200));
 

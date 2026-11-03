@@ -1,5 +1,5 @@
 /* =========================================================
-   KODAROS FERRAMENTAS — Lógica das ferramentas (client-side)
+   KODAROS FERRAMENTAS · Lógica das ferramentas (client-side)
    ========================================================= */
 
 /* ---------- Helpers ---------- */
@@ -205,7 +205,7 @@ window.addEventListener('hashchange', function(){
         e.preventDefault();
         const tab = tool.closest('.tab-panel')?.id || 'aquisicao';
         const url = location.origin + location.pathname + '#' + tab + '/' + id;
-        const text = encodeURIComponent(h3.textContent + ' — Ferramentas KODAROS ' + url);
+        const text = encodeURIComponent(h3.textContent + ' · Ferramentas KODAROS · ' + url);
         window.open('https://wa.me/?text=' + text, '_blank');
         trackEvent('share_whatsapp', {tool: id});
       });
@@ -533,7 +533,7 @@ function exportToolResult(toolId, btn){
     return;
   }
   // collect visible result texts
-  let lines=[h3,'', '— Ferramentas KODAROS —', ''];
+  let lines=[h3,'', 'Ferramentas KODAROS', ''];
   tool.querySelectorAll('.result .res').forEach(function(r){
     const v=r.querySelector('.v')?.textContent?.trim();
     const l=r.querySelector('.l')?.textContent?.trim();
@@ -599,7 +599,7 @@ function exportToolResult(toolId, btn){
   }
 }
 
-/* ---------- Recolher abas (removido — botão recolher não é mais necessário) ---------- */
+/* ---------- Recolher abas (removido: botão recolher não é mais necessário) ---------- */
 (function(){
   const tabsEl = document.getElementById('tabs');
   if (!tabsEl) return;
@@ -786,7 +786,7 @@ function fallbackCopy(text, cb){
 }
 
 /* =========================================================
-   TAB 1 — AQUISIÇÃO & TRÁFEGO
+   TAB 1 · AQUISIÇÃO & TRÁFEGO
    ========================================================= */
 
 /* 1. CAC & LTV (portado) */
@@ -818,7 +818,7 @@ function calcCAC(){
       lines.push('<tr><td>'+(dt>0?'+':'')+dt+'%</td><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td></tr>');
     });
     sens.hidden=false;
-    sens.innerHTML='<table class="tbl sens"><thead><tr><th>Ticket \u2193 \u00b7 Retenção \u2192</th><th>-20%</th><th>base</th><th>+20%</th></tr></thead><tbody>'+lines.join('')+'</tbody></table><p class="sens-note">LTV:CAC em cada cenário — saudável quando \u2265 3:1.</p>';
+    sens.innerHTML='<table class="tbl sens"><thead><tr><th>Ticket \u2193 \u00b7 Retenção \u2192</th><th>-20%</th><th>base</th><th>+20%</th></tr></thead><tbody>'+lines.join('')+'</tbody></table><p class="sens-note">LTV:CAC em cada cenário, saudável quando \u2265 3:1.</p>';
   }
   show('c1_res');
 }
@@ -998,7 +998,7 @@ function calcCRO(){
 }
 
 /* =========================================================
-   TAB 2 — LANÇAMENTO
+   TAB 2 · LANÇAMENTO
    ========================================================= */
 
 /* 1. Cronograma */
@@ -1048,7 +1048,7 @@ function calcOferta(){
 }
 
 /* =========================================================
-   TAB 3 — FINANCEIRO
+   TAB 3 · FINANCEIRO
    ========================================================= */
 
 /* 1. Precificação */
@@ -1078,7 +1078,7 @@ function calcMargem(){
   const mk=custo>0 ? (preco-custo)/custo*100 : Infinity;
   document.getElementById('ml_markup').textContent=isFinite(mk)?pct(mk):'–';
   const cmp2=document.getElementById('ml_cmp');
-  if(cmp2) cmp2.innerHTML='Margem '+pct(m)+' sobre o preço \u2260 markup '+pct(mk)+' sobre o custo. Mesmo lucro, números diferentes — cite o certo no material.';
+  if(cmp2) cmp2.innerHTML='Margem '+pct(m)+' sobre o preço \u2260 markup '+pct(mk)+' sobre o custo. Mesmo lucro, números diferentes. Cite o certo no material.';
   document.getElementById('ml_box').className='res '+(m>=30?'good':(m<0?'bad':''));
   show('ml_res');
 }
@@ -1106,7 +1106,7 @@ function exportFluxoCSV(){
   const meses=Math.max(1,Math.round(numv('fc_mes')));
   const rows=[['Mês','Entradas (R$)','Saídas (R$)','Saldo (R$)']];
   let saldo=numv('fc_ini');
-  rows.push(['0', '—', '—', brl(saldo)]);
+  rows.push(['0', '0', '0', brl(saldo)]);
   for(let i=1;i<=meses;i++){
     saldo=saldo+numv('fc_ent')-numv('fc_sai');
     rows.push([String(i), brl(numv('fc_ent')), brl(numv('fc_sai')), brl(saldo)]);
@@ -1132,7 +1132,7 @@ function calcCapitalGiro(){
 }
 
 /* =========================================================
-   TAB 4 — VENDAS
+   TAB 4 · VENDAS
    ========================================================= */
 
 /* 1. Metas */
@@ -1170,7 +1170,7 @@ function calcTicket(){
 }
 
 /* =========================================================
-   TAB 5 — SUPORTE
+   TAB 5 · SUPORTE
    ========================================================= */
 
 /* 1. NPS / Índice de Reclamações */
@@ -1214,7 +1214,7 @@ function calcSLA(){
 }
 
 /* =========================================================
-   TAB 6 — OPERAÇÃO
+   TAB 6 · OPERAÇÃO
    ========================================================= */
 
 /* 1. Checklist Semanal */
@@ -1358,11 +1358,11 @@ function calcCPE(){
 function gerarSeqEmail(){
   const nome=val('se_nome')||'Lançamento';
   const e=[
-    `E-mail 1 — Aquecimento: conteúdo educativo sobre o problema que ${nome} resolve.`,
-    `E-mail 2 — História: mostre a jornada e a transformação do seu método.`,
-    `E-mail 3 — Abertura: divulgue que as inscrições abriram, com benefícios.`,
-    `E-mail 4 — Pico: apresente depoimentos e a oferta principal.`,
-    `E-mail 5 — Fechamento: último aviso de encerramento e bônus.`
+    `E-mail 1 · Aquecimento: conteúdo educativo sobre o problema que ${nome} resolve.`,
+    `E-mail 2 · História: mostre a jornada e a transformação do seu método.`,
+    `E-mail 3 · Abertura: divulgue que as inscrições abriram, com benefícios.`,
+    `E-mail 4 · Pico: apresente depoimentos e a oferta principal.`,
+    `E-mail 5 · Fechamento: último aviso de encerramento e bônus.`
   ];
   document.getElementById('se_out').textContent=e.join('\n\n');
   show('se_res');
@@ -1580,7 +1580,7 @@ function initKodarosIdentity() {
     }));
   })();
 
-  /* ---- GOLD SCROLL — pedra -> ouro ---- */
+  /* ---- GOLD SCROLL · pedra -> ouro ---- */
   (function initGold() {
     const root = document.documentElement;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { root.style.setProperty('--gold', '1'); return; }
@@ -1625,11 +1625,11 @@ function initKodarosIdentity() {
     }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
     els.forEach(el => { el.classList.add('reveal'); obs.observe(el); });
   })();
-  // GALÁXIA removida — identidade unificada à plataforma (pedra -> ouro)
+  // GALÁXIA removida, identidade unificada à plataforma (pedra -> ouro)
   // MAGNETIC BUTTONS removido - botões fixos
   // CURSOR GLOW removido
 
-  /* ---- PARTÍCULAS DOURADAS — diagonais dos cantos inferiores ---- */
+  /* ---- PARTÍCULAS DOURADAS · diagonais dos cantos inferiores ---- */
   (function initGoldenParticles() {
     const canvas = document.getElementById('particles-canvas');
     if (!canvas || !canvas.getContext) return;
@@ -1688,7 +1688,7 @@ function initKodarosIdentity() {
     frame();
   })();
 
-  /* ---- PARTÍCULAS BASE (id="particles") — pó de pedra sutil ---- */
+  /* ---- PARTÍCULAS BASE (id="particles") · pó de pedra sutil ---- */
   (function initBaseParticles() {
     const canvas = document.getElementById('particles');
     if (!canvas || !canvas.getContext) return;
@@ -1757,7 +1757,7 @@ if (document.readyState === 'loading') {
 }
 
 /* =========================================================
-   TEMPLATES EDITÁVEIS (cartão, post, cupom) — baixar PNG
+   TEMPLATES EDITÁVEIS (cartão, post, cupom) · baixar PNG
    ========================================================= */
 (function initTemplates(){
   const imgs={cartao:null, post:null, cupom:null};
@@ -1836,7 +1836,7 @@ if (document.readyState === 'loading') {
 })();
 
 /* =========================================================
-   PWA — registro do Service Worker (offline)
+   PWA · registro do Service Worker (offline)
    ========================================================= */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
   window.addEventListener('load', function(){

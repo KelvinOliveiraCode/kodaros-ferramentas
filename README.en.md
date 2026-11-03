@@ -1,102 +1,117 @@
-# KODAROS Tools
+# kodaros-ferramentas
 
-![PWA offline-first](https://img.shields.io/badge/PWA-offline_first-black?style=flat-square)
-![JavaScript vanilla](https://img.shields.io/badge/JavaScript-vanilla-black?style=flat-square)
-![Service Worker](https://img.shields.io/badge/Service%20Worker-cache%20offline-black?style=flat-square)
+<div align="center">
 
-Set of 53 calculators and generators for management, acquisition, launch, financial, sales, support, and content. Everything runs in the user's browser, no registration, no cost, and no data sent to any server.
+**English** · [Português (Brasil)](README.md)
 
-## Problem / Why it exists
+</div>
 
-Small businesses need numbers (CAC, LTV, break-even point, cash flow, NPS) but useful tools usually require registration, subscription, or sending data to external servers. The formulas are also scattered across KODAROS e-books without a quick way to apply them. This project brings together the calculators cited in the e-books into a single site, 100% client-side, no AI.
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS) [![Vanilla JS](https://img.shields.io/badge/Vanilla%20JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-222?style=flat-square&logo=githubpages)](https://pages.github.com/) [![MIT License](https://img.shields.io/badge/License-MIT-f4c430?style=flat-square)](LICENSE)
 
-## What it does
+### Business calculators PWA, offline-first
 
-- 53 tools in 7 categories: Acquisition & Traffic (13), Launch (6), Financial (8), Sales (7), Support & Transformation (6), Operations & Management (7), Content & Marketing (6).
-- Every calculation runs entirely in the browser; nothing leaves the user's device.
-- Exports results as PNG with 1 click (canvas) and CSV (cash flow).
-- Favorites and recents saved in browser localStorage.
-- Keyword search (shortcut /) and keys 1 to 7 to open categories.
-- Service worker caches the site core for offline use (PWA, standalone display).
-- Each tool cites its source reference e-book.
-- Single source of truth: KODAROS_TOOLS array in script.js (id, name, category, e-book).
+---
 
-## Stack
+## What it is
 
-- HTML5, CSS3, and vanilla JavaScript (no build step, no frameworks, no production dependencies)
-- Service Worker (sw.js, kodaros-tools-v5 cache, cache-first strategy with network fallback for same origin)
-- Web App Manifest (manifest.json, standalone display, 192x192, 512x512 and maskable icons)
-- localStorage (favorites, recents, input persistence, anonymous kodaros_events events)
-- Canvas API (PNG export of results and editable templates: business card, Instagram post, coupon)
-- Fonts: Cinzel, Cormorant Garamond, and Figtree (Google Fonts)
-- Hosting: GitHub Pages (https://kelvinoliveiracode.github.io/kodaros-ferramentas/)
-- Tests: jsdom (tests/smoke.js)
+Business calculators PWA, offline-first
+
+---
+
+## Quick Start
+
+Open `index.html` directly in your browser, or serve locally:
+
+```bash
+python -m http.server 8080
+# Access http://localhost:8080
+```
+
+Or deploy to GitHub Pages / Netlify / Vercel with zero configuration.
 
 ## How it works
 
-index.html loads style.css and script.js. All tools are declared in KODAROS_TOOLS. When opening a tab, panels are shown or hidden by the active class. Each calculator reads the inputs, validates (non-negative values), calculates with its dedicated function, and displays the result. The service worker intercepts same-origin GET requests, responds from the kodaros-tools-v5 cache when available, fetches from the network otherwise, and serves ./ as fallback on failure. PWA installation happens via the manifest in browsers that support it.
+**Arquitetura zero-build, arquivo único** ,  tudo vive em `index.html`:
+- **HTML5** estrutura semântica
+- **CSS3** propriedades customizadas para tema (claro/escuro)
+- **Vanilla ES6+ JavaScript** ,  sem framework, sem build
+- **localStorage** para persistência de tema
+- **Catálogo JSON** (`catalogo.json`) como fonte de dados aberta
 
-## How to run
+---
 
-There is no build step nor production dependencies.
+## Capabilities
 
-1. Download or clone the Kodaros Ferramentas folder.
-2. Open index.html in the browser.
-3. To use as a PWA: visit https://kelvinoliveiracode.github.io/kodaros-ferramentas/ and install (Add to home screen).
+| Capacidade | Descrição |
+|------------|-------------|
+| Motor de Recomendação | Filtro determinístico: Área ∩ Preço -> Provedor -> Tier gratuito -> Nível de config |
+| Catálogo | 124 serviços de 8 provedores (AWS, Azure, GCP, Oracle, Cloudflare, DO, Firebase, Google) |
+| Dados Abertos | catalogo.json + llms.txt para consumo por chat de IA |
+| Educação | Vocabulário de nuvem (IaaS/PaaS/SaaS), myth-busting, glossário, quiz de 5 perguntas |
+| Tematização | Modo claro/escuro persistido em localStorage, sem CSS externo |
+| Zero Build | index.html único ,  deploy em qualquer lugar (GitHub Pages, Netlify, Vercel) |
+| Auditoria | Cada decisão do filtro exibida: "Como chegamos aqui" rastreia todos 124 serviços |
+| Sem Rastreamento | Sem contas de usuário, sem analytics, sem dependências externas |
 
-To run the tests:
 
-```
-cd tests
-npm install
-npm test
-```
+---
 
-The smoke test validates with jsdom that KODAROS_TOOLS has 53 tools, unique IDs, calculations (CAC, pricing, cash flow), empty search, favorites, and absence of runtime errors.
 
-## Project structure
 
-```
-Kodaros Ferramentas/
-├── index.html          PWA shell: 7 tabs and 53 tools
-├── script.js           calculator logic, formulas, search, favorites, export, SW registration
-├── style.css           Dossiê visual identity (stone and gold), responsive
-├── manifest.json       PWA manifest (standalone, icons)
-├── sw.js               offline-first service worker (kodaros-tools-v5 cache)
-├── kodaros_icon.png    app icon / apple-touch-icon
-├── icon-192.png        PWA icon 192x192
-├── icon-512.png        PWA icon 512x512
-├── icon-512-maskable.png PWA maskable icon 512x512
-├── banner.png          footer banner
-├── bust.png            navbar icon
-├── kodaros_logo.png    brand mark
-├── kodaros_og.png      sharing image (OG)
-├── bg-salao.jpg        background image
-├── robots.txt          crawling instructions
-├── sitemap.xml         site sitemap
-└── tests/              jsdom smoke tests (package.json, smoke.js, node_modules)
-```
+---
 
-## Trade-offs and decisions
+## FAQ
 
-- 100% client-side by privacy decision: nothing leaves the device. Trade-off: no cross-device sync or backend.
-- No build step: works by opening the HTML directly in the browser. Trade-off: CSS and JS not minified.
-- localStorage for favorites and recents: persists only in the device's browser; clearing browser data deletes the favorites.
-- Service worker with fixed static cache (kodaros-tools-v5): Google Fonts are not intercepted (same origin only).
-- Result export is a PNG generated locally via canvas, with TXT as fallback.
+<details>
+<summary><strong>What is this project?</strong></summary>
 
-## Known limitations
+A vanilla JS study/project demonstrating Custom CSS styling, JSON data catalog, Single-page HTML entry, Vanilla JavaScript logic, localStorage theme persistence.
 
-- Does not work without JavaScript enabled.
-- No login, so favorites and history do not leave the browser/device.
-- On the first visit fonts (Google Fonts) require a connection; after that the service worker keeps the core offline.
-- Calculations are simulations with pre-filled example values; they do not replace professional accounting or financial advice.
-- Business card, post, and coupon templates export PNG locally via canvas; optional image upload works only on the device.
+</details>
+
+<details>
+<summary><strong>How do I run it?</strong></summary>
+
+See [Quick Start](#quick-start) for copy-paste commands.
+
+</details>
+
+<details>
+<summary><strong>Are there tests?</strong></summary>
+
+No automated tests in this repository.
+
+</details>
+
+<details>
+<summary><strong>Can I use this in production?</strong></summary>
+
+This is a **study/portfolio project**. Review and harden (auth, persistence, monitoring, etc.) before production use.
+
+</details>
+
+
+
+---
+
+## Documentation
+
+- **Source Code** ,  Browse the `src/` directory for implementation details
+- **API Reference** ,  N/A
+- **Architecture Diagram** ,  See [architecture.mermaid](docs/architecture.mermaid) (if present)
+- **Changelog** ,  [CHANGELOG.md](CHANGELOG.md) (if present)
+- **Contributing** ,  [CONTRIBUTING.md](CONTRIBUTING.md) (if present)
 
 ## License
 
-All rights reserved. KODAROS, 2026.
+[MIT](LICENSE) ,  Kelvin Oliveira
 
-## Author
+---
 
-KODAROS - kodaros01@gmail.com - https://kelvinoliveiracode.github.io/kodaros-landing/
+<div align="center">
+
+**Built with** · Vanilla HTML/CSS/JS
+
+**Author** · [Kelvin Oliveira](https://github.com/KelvinOliveiraCode) · [Portfolio](https://kelvinoliveiracode.github.io/portfolio/)
+
+</div>

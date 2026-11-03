@@ -30,7 +30,7 @@ Pequenos negócios precisam de números (CAC, LTV, ponto de equilíbrio, fluxo d
 - localStorage (favoritos, recentes, persistência de inputs, eventos anônimos kodaros_events)
 - Canvas API (exportação PNG de resultados e templates editáveis: cartão de visita, post Instagram, cupom)
 - Fontes: Cinzel, Cormorant Garamond e Figtree (Google Fonts)
-- Hospedagem: GitHub Pages (https://kelvinoliveiracode.github.io/kodarosferramentas/)
+- Hospedagem: GitHub Pages (https://kelvinoliveiracode.github.io/kodaros-ferramentas/)
 - Testes: jsdom (tests/smoke.js)
 
 ## Como funciona
@@ -43,7 +43,7 @@ Não há passo de build nem dependências de produção.
 
 1. Baixe ou clone a pasta Kodaros Ferramentas.
 2. Abra index.html no navegador.
-3. Para usar como PWA: acesse https://kelvinoliveiracode.github.io/kodarosferramentas/ e instale (Adicionar à tela inicial).
+3. Para usar como PWA: acesse https://kelvinoliveiracode.github.io/kodaros-ferramentas/ e instale (Adicionar à tela inicial).
 
 Para rodar os testes:
 
@@ -100,7 +100,7 @@ Todos os direitos reservados. KODAROS, 2026.
 
 ## Autor
 
-KODAROS — kodaros01@gmail.com — https://kelvinoliveiracode.github.io/KodarosLanding/
+KODAROS - kodaros01@gmail.com - https://kelvinoliveiracode.github.io/kodaros-landing/
 =======
 # Kodaros Ferramentas — PWA com 53 Calculadoras
 

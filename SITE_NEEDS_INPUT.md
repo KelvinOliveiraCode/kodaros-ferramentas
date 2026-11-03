@@ -1,0 +1,5 @@
+# SITE_NEEDS_INPUT.md — Pendências que exigem decisão do dono
+
+1. **Endereço antigo em canais fora do site.** O site agora usa `https://kelvinoliveiracode.github.io/kodaros-ferramentas/` em `canonical`, `og:url`, `og:image`, `twitter:image`, JSON-LD, `sitemap.xml` e `robots.txt`, e o link para a landing virou `https://kelvinoliveiracode.github.io/kodaros-landing/`. **Ação sua:** atualizar o mesmo endereço nos materiais que ainda apontam para o caminho antigo (`kodarosferramentas` / `KodarosLanding`): e-books, páginas da Hotmart, posts no Instagram e mensagens prontas do WhatsApp.
+2. **"Sem IA" no site.** Mantive a frase, mas ela agora está explícita: "sem IA no cálculo" — nenhuma ferramenta chama modelo de IA; o resultado vem de fórmula fixa. A copy também diz que a construção do site usa agentes de IA, para não sugerir que o site foi feito sem IA. Confirme se esse é o enquadramento que você quer.
+3. **Cache do service worker.** A versão subiu de `kodaros-tools-v5` para `kodaros-tools-v6` porque `index.html` mudou. Se você publicar mais mudanças nesses arquivos, suba a versão de novo.

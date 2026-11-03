@@ -6,7 +6,7 @@
 
 ## What it is
 
-A set of **53 business calculators and generators** that run entirely in the browser, with no server and no AI. They cover acquisition, launch, finance, sales, support and content — and are used from the KODAROS digital-products site.
+A set of **53 business calculators and generators** that run entirely in the browser, with no server and no AI. They cover acquisition, launch, finance, sales, support and content, and are used from the KODAROS digital-products site.
 
 It is an **offline-first PWA**: a service worker caches the core files and the app keeps working with no network.
 
@@ -25,7 +25,7 @@ In production. Published at <https://kelvinoliveiracode.github.io/kodaros-ferram
 
 ## Architecture
 
-Two application files — `index.html` (structure) and `script.js` (logic for the 53 tools) — plus `style.css` for the theme. A `sw.js` registers the service worker. A smoke test runs with **jsdom** in CI (GitHub Actions).
+Two application files: `index.html` (structure) and `script.js` (logic for the 53 tools), plus `style.css` for the theme. A `sw.js` registers the service worker. A smoke test runs with **jsdom** in CI (GitHub Actions).
 
 ```mermaid
 flowchart LR
@@ -77,7 +77,7 @@ python -m http.server 8080
 ## Tests and quality
 
 - Command: `cd tests && npm install && npm run test` (runs `node smoke.js` with jsdom).
-- Real result (verified by the agent): **19 asserts passing** — covering CAC calculation sensitivity (3 scenarios), markup pricing, margin, a 6-month cash-flow projection, CSV export error-free, the empty-search state, the favorite chip, and no runtime errors. Final output: "Tudo ok."
+- Real result (verified by the agent): **19 asserts passing**, covering CAC calculation sensitivity (3 scenarios), markup pricing, margin, a 6-month cash-flow projection, CSV export error-free, the empty-search state, the favorite chip, and no runtime errors. Final output: "Tudo ok."
 - CI: the `smoke.yml` workflow runs on push and on pull requests to `main` (Node 20).
 
 ## Technical decisions and trade-offs
@@ -98,6 +98,6 @@ An individual project by Kelvin Oliveira, built with orchestrated AI agents and 
 
 ## License and author
 
-MIT — Copyright (c) 2026 Kelvin Rebelo de Oliveira.
+MIT · Copyright (c) 2026 Kelvin Rebelo de Oliveira.
 
 **Author**: [Kelvin Oliveira](https://github.com/KelvinOliveiraCode) · [Portfolio](https://kelvinoliveiracode.github.io/portfolio/)

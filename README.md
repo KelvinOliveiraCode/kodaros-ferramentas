@@ -6,7 +6,7 @@
 
 ## O que é
 
-Conjunto de **53 calculadoras e geradores de negócio** que rodam 100% no navegador, sem servidor e sem IA. São ferramentas para aquisição, lançamento, financeiro, vendas, suporte e conteúdo — usadas a partir do site de produtos digitais da KODAROS.
+Conjunto de **53 calculadoras e geradores de negócio** que rodam 100% no navegador, sem servidor e sem IA. São ferramentas para aquisição, lançamento, financeiro, vendas, suporte e conteúdo, usadas a partir do site de produtos digitais da KODAROS.
 
 É um PWA **offline-first**: um service worker cacheia os arquivos principais e o app segue funcionando sem rede.
 
@@ -25,7 +25,7 @@ Em produção. Publicado em <https://kelvinoliveiracode.github.io/kodaros-ferram
 
 ## Arquitetura
 
-Dois arquivos de aplicação — `index.html` (estrutura) e `script.js` (lógica das 53 ferramentas) — com `style.css` para o tema. Um `sw.js` registra o service worker. Teste de fumaça roda com **jsdom** em CI (GitHub Actions).
+Dois arquivos de aplicação: `index.html` (estrutura) e `script.js` (lógica das 53 ferramentas), com `style.css` para o tema. Um `sw.js` registra o service worker. Teste de fumaça roda com **jsdom** em CI (GitHub Actions).
 
 ```mermaid
 flowchart LR
@@ -77,7 +77,7 @@ python -m http.server 8080
 ## Testes e qualidade
 
 - Comando: `cd tests && npm install && npm run test` (roda `node smoke.js` com jsdom).
-- Resultado real (verificado pelo agente): **19 asserts passando** — inclui sensibilidade do cálculo de CAC (3 cenários), precificação com markup, margem, projeção de fluxo em 6 meses, exportação CSV sem erro, estado vazio da busca, favorito com chip e ausência de erros de runtime. Saída final: "Tudo ok."
+- Resultado real (verificado pelo agente): **19 asserts passando**, inclui sensibilidade do cálculo de CAC (3 cenários), precificação com markup, margem, projeção de fluxo em 6 meses, exportação CSV sem erro, estado vazio da busca, favorito com chip e ausência de erros de runtime. Saída final: "Tudo ok."
 - CI: fluxo `smoke.yml` roda no push e em pull request para `main` (Node 20).
 
 ## Decisões técnicas e trade-offs
@@ -98,6 +98,6 @@ Projeto individual de Kelvin Oliveira, construído com agentes de IA orquestrado
 
 ## Licença e autor
 
-MIT — Copyright (c) 2026 Kelvin Rebelo de Oliveira.
+MIT · Copyright (c) 2026 Kelvin Rebelo de Oliveira.
 
 **Autor**: [Kelvin Oliveira](https://github.com/KelvinOliveiraCode) · [Portfólio](https://kelvinoliveiracode.github.io/portfolio/)

@@ -75,7 +75,7 @@ setTimeout(function run() {
   check('Favorito liga com chip', star.classList.contains('on') && !!document.querySelector('#favBarFavs .chip'));
   star.click();
 
-  check('Link principal = KodarosLanding', document.querySelector('.nav-cta').href.includes('KodarosLanding'));
+  check('Link principal = landing', document.querySelector('.nav-cta').href.includes('kelvinoliveiracode.github.io/kodaros-landing/'));
   check('CSS Dossiê presente', css.includes('hero-ledger') && css.includes('.tool.fav .tool-num'));
 
   check('Sem erros de runtime', runtimeErrors.length === 0, runtimeErrors.join(' | ').slice(0, 200));

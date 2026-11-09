@@ -1855,3 +1855,25 @@ if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
     navigator.serviceWorker.register('sw.js').catch(function(){});
   });
 }
+
+/* =========================================================
+   ENTRADA DO HERO após o carregamento (igual à Landing)
+   ========================================================= */
+(function heroReady() {
+  if (!document.querySelector('.hero-content')) return;
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  if (reduce) {
+    document.documentElement.classList.add('is-ready');
+    return;
+  }
+  var done = false;
+  function ready() {
+    if (done) return;
+    done = true;
+    document.documentElement.classList.add('is-ready');
+  }
+  if (document.readyState === 'complete') { ready(); return; }
+  window.addEventListener('load', ready, { once: true });
+  setTimeout(ready, 1800);
+})();

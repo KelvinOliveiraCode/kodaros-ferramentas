@@ -7,7 +7,7 @@
 <meta name="description" content="Ferramentas gratuitas da KODAROS: calculadoras de aquisição, lançamento, financeiro, vendas, suporte e gestão. 100% client-side, sem IA no cálculo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <meta property="og:title" content="Ferramentas KODAROS">
 <meta property="og:description" content="Calculadoras e geradores gratuitos, citáveis nos e-books KODAROS.">
 <meta property="og:image" content="https://kelvinoliveiracode.github.io/kodaros-ferramentas/kodaros_og.png">
@@ -49,16 +49,38 @@
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="#inicio" class="nav-logo" aria-label="KODAROS">
+      <img src="bust.png" alt="" class="nav-bust" width="38" height="38">
       <span class="nav-logo-text">KODAROS</span>
-      <img src="bust.png" alt="KODAROS" class="nav-bust" height="40">
     </a>
-    <span class="nav-ed">FERRAMENTAS</span>
-    <a href="https://kelvinoliveiracode.github.io/kodaros-landing/" target="_blank" rel="noopener" class="nav-cta">
-      <span>Plataforma KODAROS</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+    <span class="nav-ed">Ferramentas</span>
+    <div class="nav-links">
+      <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#modulos">Ecossistema</a>
+      <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#biblioteca">Biblioteca</a>
+      <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#mostruario">Mostruário</a>
+      <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#diagnostico">Diagnóstico</a>
+      <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#duvidas">Dúvidas</a>
+    </div>
+    <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#diagnostico" class="nav-cta">
+      <span>Diagnóstico gratuito</span>
     </a>
+    <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="drawer" id="drawer">
+  <nav aria-label="Menu principal">
+    <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#modulos">Ecossistema</a>
+    <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#biblioteca">Biblioteca</a>
+    <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#mostruario">Mostruário</a>
+    <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#diagnostico">Diagnóstico</a>
+    <a href="https://kelvinoliveiracode.github.io/kodaros-landing/#duvidas">Dúvidas</a>
+  </nav>
+  <div class="drawer-actions">
+    <a class="btn btn-primary" href="https://kelvinoliveiracode.github.io/kodaros-landing/#diagnostico">Diagnóstico gratuito</a>
+    <a class="btn btn-ghost" href="https://kelvinoliveiracode.github.io/kodaros-landing/">Plataforma KODAROS</a>
+  </div>
+</div>
 <div class="page-wrap">
 
 <!-- HERO -->
@@ -118,9 +140,9 @@
 </div>
 
 <div class="fav-bar-wrap" id="favBarWrap" hidden>
-  <span class="fav-bar-label">⭐ Favoritas</span>
+  <span class="fav-bar-label"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>Favoritas</span>
   <div class="fav-bar" id="favBarFavs" aria-label="Ferramentas favoritadas"></div>
-  <span class="fav-bar-label">🕒 Recentes</span>
+  <span class="fav-bar-label"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Recentes</span>
   <div class="fav-bar" id="favBarRecent" aria-label="Ferramentas usadas recentemente"></div>
 </div>
 
@@ -1242,19 +1264,36 @@
 
 <footer class="footer">
   <div class="container">
-    <a class="footer-banner" href="#inicio" aria-label="KODAROS, voltar ao início"><img src="banner.png" alt="KODAROS" height="84" loading="lazy"></a>
-    <nav class="footer-lines" aria-label="Mapa do site">
-      <a href="#inicio">Início</a><span class="sep">·</span>
-      <a href="#aquisicao">Aquisição</a><span class="sep">·</span>
-      <a href="#lancamento">Lançamento</a><span class="sep">·</span>
-      <a href="#financeiro">Financeiro</a><span class="sep">·</span>
-      <a href="#vendas">Vendas</a><span class="sep">·</span>
-      <a href="#suporte">Suporte</a><span class="sep">·</span>
-      <a href="#operacao">Gestão</a><span class="sep">·</span>
-      <a href="#conteudo">Conteúdo</a><span class="sep">·</span>
-      <a href="https://kelvinoliveiracode.github.io/kodaros-landing/" target="_blank" rel="noopener">Plataforma KODAROS</a>
-    </nav>
-    <div class="footer-bottom">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="footer-banner" href="#inicio" aria-label="KODAROS, voltar ao início"><img src="banner.png" alt="KODAROS" height="84" loading="lazy"></a>
+        <p>Ferramentas gratuitas da KODAROS: calculadoras e geradores que rodam direto no navegador.</p>
+      </div>
+      <div class="foot-col">
+        <h3>Ferramentas</h3>
+        <ul>
+          <li><a href="#aquisicao">Aquisição</a></li>
+          <li><a href="#lancamento">Lançamento</a></li>
+          <li><a href="#financeiro">Financeiro</a></li>
+          <li><a href="#vendas">Vendas</a></li>
+          <li><a href="#suporte">Suporte</a></li>
+          <li><a href="#operacao">Gestão</a></li>
+          <li><a href="#conteudo">Conteúdo</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Plataforma</h3>
+        <ul>
+          <li><a href="https://kelvinoliveiracode.github.io/kodaros-landing/#modulos">Ecossistema</a></li>
+          <li><a href="https://kelvinoliveiracode.github.io/kodaros-landing/#biblioteca">Biblioteca</a></li>
+          <li><a href="https://kelvinoliveiracode.github.io/kodaros-landing/#mostruario">Mostruário</a></li>
+          <li><a href="https://kelvinoliveiracode.github.io/kodaros-landing/#diagnostico">Diagnóstico</a></li>
+          <li><a href="https://kelvinoliveiracode.github.io/kodaros-landing/#duvidas">Dúvidas</a></li>
+          <li><a href="https://kelvinoliveiracode.github.io/kodaros-landing/" target="_blank" rel="noopener">Plataforma KODAROS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
       <p>Sem coleta de dados pessoais. Métricas anônimas em localStorage (<code>kodaros_events</code>). <a href="#" onclick="localStorage.clear(); alert('Dados locais limpos.'); return false;">Limpar dados locais</a></p>
       <p>© <span id="footer-year">2026</span> KODAROS. Todos os direitos reservados.</p>
     </div>

@@ -1277,7 +1277,7 @@ function calcPareto(){
     if(vital) vitalCount++;
     if(pctAcum >= 80) reached80 = true;
     const tr=document.createElement('tr');
-    [x.n, num(x.v), pct(pctAcum), vital?'⭐ Sim':'–'].forEach((v,idx)=>{
+    [x.n, num(x.v), pct(pctAcum), vital?'Sim':'–'].forEach((v,idx)=>{
       const td=document.createElement('td'); td.textContent=v;
       td.style.textAlign = idx===0 ? 'left' : 'right';
       tr.appendChild(td);
@@ -1557,7 +1557,7 @@ function initKodarosIdentity() {
   let isTabActive = true;
   document.addEventListener('visibilitychange', () => { isTabActive = !document.hidden; });
 
-  /* ---- NAVBAR (sempre visível) ---- */
+  /* ---- NAVBAR (sempre visível) + drawer mobile ---- */
   (function initNavbar() {
     const navbar = document.getElementById('navbar'); if (!navbar) return;
     function handle() {
@@ -1568,6 +1568,18 @@ function initKodarosIdentity() {
     }
     window.addEventListener('scroll', handle, { passive: true });
     handle();
+    const burger = document.getElementById('navBurger');
+    const drawer = document.getElementById('drawer');
+    if (burger && drawer) {
+      function setDrawer(open) {
+        drawer.classList.toggle('is-open', open);
+        burger.setAttribute('aria-expanded', String(open));
+        document.body.classList.toggle('is-locked', open);
+      }
+      burger.addEventListener('click', function () { setDrawer(!drawer.classList.contains('is-open')); });
+      drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setDrawer(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.classList.contains('is-open')) setDrawer(false); });
+    }
   })();
 
   /* ---- SMOOTH SCROLL ---- */
@@ -1638,7 +1650,7 @@ function initKodarosIdentity() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let dpr = window.devicePixelRatio || 1;
     let W = 0, H = 0, particles = [];
-    const COUNT = window.innerWidth < 720 ? 40 : 90;
+    const COUNT = window.innerWidth < 720 ? 14 : 30;
     const GOLD = ['212,175,106', '232,201,154', '184,148,79', '201,168,92'];
     function rand(a, b) { return a + Math.random() * (b - a); }
     function createParticle() {
@@ -1647,8 +1659,8 @@ function initKodarosIdentity() {
         x: fromLeft ? rand(-50, W * 0.25) : rand(W * 0.75, W + 50),
         y: H + rand(0, 80),
         r: rand(0.6, 2.4),
-        vx: fromLeft ? rand(0.25, 0.7) : rand(-0.7, -0.25),
-        vy: rand(-0.5, -1.2),
+        vx: fromLeft ? rand(0.10, 0.30) : rand(-0.30, -0.10),
+        vy: rand(-0.20, -0.55),
         o: rand(0.15, 0.55),
         c: GOLD[(Math.random() * GOLD.length) | 0],
         wobble: rand(0, Math.PI * 2),
@@ -1695,8 +1707,8 @@ function initKodarosIdentity() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const COUNT = 28;
-    const COLORS = ['59,91,254', '197,164,106', '154,163,184'];
+    const COUNT = 12;
+    const COLORS = ['212,175,106', '197,164,106', '154,163,184'];
     let dots = [];
     function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener('resize', resize, { passive: true });
@@ -1705,7 +1717,7 @@ function initKodarosIdentity() {
       dots.push({
         x: Math.random() * canvas.width, y: Math.random() * canvas.height,
         r: 0.8 + Math.random() * 2.2,
-        vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
+        vx: (Math.random() - 0.5) * 0.10, vy: (Math.random() - 0.5) * 0.10,
         c: COLORS[i % COLORS.length], o: 0.08 + Math.random() * 0.16
       });
     }
@@ -1783,8 +1795,8 @@ if (document.readyState === 'loading') {
     let lx=70;
     if(imgs.cartao){ const s=120; x.drawImage(imgs.cartao, lx, 95, s, s); lx=lx+s+34; }
     x.textBaseline='top'; x.textAlign='left';
-    x.fillStyle='#FFFFFF'; x.font='700 52px Figtree, Arial, sans-serif'; x.fillText(val('cartao_nome')||'', lx, 110);
-    x.fillStyle='#A3A3A3'; x.font='400 28px Figtree, Arial, sans-serif'; x.fillText(val('cartao_cargo')||'', lx, 178);
+    x.fillStyle='#FFFFFF'; x.font='400 52px "Instrument Serif", Georgia, serif'; x.fillText(val('cartao_nome')||'', lx, 110);
+    x.fillStyle='#A3A3A3'; x.font='500 28px "JetBrains Mono", monospace'; x.fillText(val('cartao_cargo')||'', lx, 178);
     x.strokeStyle='rgba(255,255,255,0.2)'; x.beginPath(); x.moveTo(70,285); x.lineTo(W-70,285); x.stroke();
     x.fillStyle='#F5F5F5'; x.font='400 24px Figtree, Arial, sans-serif';
     x.fillText(val('cartao_tel')||'', 70, 300);
@@ -1798,9 +1810,9 @@ if (document.readyState === 'loading') {
     x.strokeStyle='rgba(255,255,255,0.25)'; x.lineWidth=3; x.strokeRect(40,40,W-80,H-80);
     if(imgs.post){ const s=150; x.drawImage(imgs.post, W/2-s/2, 90, s, s); }
     x.fillStyle='#FFFFFF'; x.textAlign='center'; x.textBaseline='middle';
-    x.font='700 64px Figtree, Arial, sans-serif';
+    x.font='400 64px "Instrument Serif", Georgia, serif';
     wrapText(x, val('post_frase')||'', W/2, H/2, W-260, 78);
-    x.fillStyle='#A3A3A3'; x.font='500 34px Figtree, Arial, sans-serif';
+    x.fillStyle='#A3A3A3'; x.font='500 34px "JetBrains Mono", monospace';
     x.fillText(val('post_autor')||'', W/2, H-110);
     x.textAlign='left';
   }
@@ -1810,10 +1822,10 @@ if (document.readyState === 'loading') {
     x.fillStyle='#0A0A0A'; x.fillRect(0,0,W,H);
     x.strokeStyle='rgba(255,255,255,0.3)'; x.lineWidth=3; x.strokeRect(40,40,W-80,H-80);
     x.textAlign='center'; x.textBaseline='middle'; x.fillStyle='#FFFFFF';
-    x.font='800 70px Figtree, Arial, sans-serif'; x.fillText(val('cupom_tit')||'', W/2, 230);
-    x.font='800 130px Figtree, Arial, sans-serif'; x.fillText(val('cupom_desc')||'', W/2, 470);
-    x.fillStyle='#A3A3A3'; x.font='500 40px Figtree, Arial, sans-serif'; x.fillText(val('cupom_val')||'', W/2, 660);
-    x.fillStyle='#F5F5F5'; x.font='700 48px Figtree, Arial, sans-serif'; x.fillText('Cupom: '+(val('cupom_cod')||''), W/2, 820);
+    x.font='400 70px "Instrument Serif", Georgia, serif'; x.fillText(val('cupom_tit')||'', W/2, 230);
+    x.font='400 130px "Instrument Serif", Georgia, serif'; x.fillText(val('cupom_desc')||'', W/2, 470);
+    x.fillStyle='#A3A3A3'; x.font='500 40px "JetBrains Mono", monospace'; x.fillText(val('cupom_val')||'', W/2, 660);
+    x.fillStyle='#F5F5F5'; x.font='500 48px "JetBrains Mono", monospace'; x.fillText('Cupom: '+(val('cupom_cod')||''), W/2, 820);
     x.textAlign='left';
   }
   const renderers={cartao:renderCartao, post:renderPost, cupom:renderCupom};
